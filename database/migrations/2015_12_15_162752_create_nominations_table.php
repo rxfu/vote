@@ -12,12 +12,16 @@ class CreateNominationsTable extends Migration {
 	public function up() {
 		Schema::create('nominations', function (Blueprint $table) {
 			$table->increments('id');
+			$table->integer('seq')->default(0);
 			$table->string('title')->nullable();
 			$table->binary('photo')->nullable();
 			$table->text('brief')->nullable();
 			$table->longText('detail')->nullable();
 			$table->string('link')->nullable();
+			$table->integer('vote_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('vote_id')->references('id')->on('votes')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

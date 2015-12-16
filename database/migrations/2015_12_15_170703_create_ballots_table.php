@@ -12,9 +12,12 @@ class CreateBallotsTable extends Migration {
 	public function up() {
 		Schema::create('ballots', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('voter_id');
-			$table->integer('nomination_id');
+			$table->integer('voter_id')->unsigned();
+			$table->integer('nomination_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('voter_id')->references('id')->on('voters')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('nomination_id')->references('id')->on('nominations')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

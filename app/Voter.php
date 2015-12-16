@@ -9,6 +9,6 @@ class Voter extends Model {
 	protected $table = 'voters';
 
 	public function nominations() {
-		return $this->belongsToMany('Nomination', 'ballots', 'voter_id', 'nomination_id');
+		return $this->belongsToMany('App\Nomination', 'ballots', 'voter_id', 'nomination_id');
 	}
 }

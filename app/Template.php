@@ -9,6 +9,6 @@ class Template extends Model {
 	protected $table = 'templates';
 
 	public function votes() {
-		return $this->hasMany('Vote');
+		return $this->hasMany('App\Vote');
 	}
 }

@@ -34,3 +34,12 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 		'is_active'   => $faker->boolean(),
 	];
 });
+
+$factory->define(App\Nomination::class, function (Faker\Generator $faker) {
+	return [
+		'title'  => $faker->sentence,
+		'brief'  => $faker->paragraph,
+		'detail' => $faker->text,
+		'link'   => $faker->url,
+	];
+});

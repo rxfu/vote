@@ -12,7 +12,7 @@ class Vote extends Model {
 		return $this->belongsTo('App\Template');
 	}
 
-	public function Nominations() {
+	public function nominations() {
 		return $this->hasMany('App\Nomination');
 	}
 }

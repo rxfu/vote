@@ -13,7 +13,7 @@ class TemplateTableSeeder extends Seeder {
 		DB::table('votes')->truncate();
 
 		factory(App\Template::class, 5)->create()->each(function ($tpl) {
-			$tpl->votes()->save(factory(App\Vote::class)->make());
+			$tpl->votes()->saveMany(factory(App\Vote::class, 2)->make());
 		});
 	}
 }

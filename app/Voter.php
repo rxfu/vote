@@ -11,4 +11,8 @@ class Voter extends Model {
 	public function nominations() {
 		return $this->belongsToMany('App\Nomination', 'ballots', 'voter_id', 'nomination_id');
 	}
+
+	public function type() {
+		return $this->belongsTo('App\Type');
+	}
 }

@@ -10,6 +10,7 @@ return array(
     'CreateNominationsTable' => $baseDir . '/database/migrations/2015_12_15_162752_create_nominations_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateTemplatesTable' => $baseDir . '/database/migrations/2015_12_15_144143_create_templates_table.php',
+    'CreateTypesTable' => $baseDir . '/database/migrations/2015_12_15_150729_create_types_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVotersTable' => $baseDir . '/database/migrations/2015_12_15_164633_create_voters_table.php',
     'CreateVotesTable' => $baseDir . '/database/migrations/2015_12_15_144212_create_votes_table.php',
@@ -522,5 +523,4 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
-    'VoteTableSeeder' => $baseDir . '/database/seeds/VoteTableSeeder.php',
 );

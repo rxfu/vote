@@ -15,7 +15,7 @@ class CreateVotersTable extends Migration {
 			$table->integer('ip')->unsigned()->nullable();
 			$table->string('name')->nullable();
 			$table->string('department')->nullable();
-			$table->integer('identity')->nullable();
+			$table->integer('type_id')->nullable();
 			$table->string('mobile', 15)->nullable();
 			$table->timestamps();
 		});

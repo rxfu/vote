@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Template;
 use App\Type;
 use App\Vote;
 use App\Voter;
 use Illuminate\Http\Request;
 
 class VoteController extends Controller {
+
+	public function __construct() {
+		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote']]);
+	}
 
 	public function getIndex() {
 		$votes = Vote::where('is_active', '=', '1')
@@ -55,5 +60,11 @@ class VoteController extends Controller {
 		$votes = Vote::orderBy('updated_at', 'desc')->get();
 
 		return view('vote.list', ['title' => '投票列表', 'votes' => $votes]);
+	}
+
+	public function getAdd() {
+		$templates = Template::orderBy('id')->get();
+
+		return view('vote.add', ['title' => '添加投票', 'templates' => $templates]);
 	}
 }

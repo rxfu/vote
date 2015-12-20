@@ -21,4 +21,10 @@ class NominationController extends Controller {
 		}
 		return view('nomination.list', ['title' => '投票条目列表', 'nominations' => $nominations]);
 	}
+
+	public function getShow($id) {
+		$nomination = Nomination::find($id);
+
+		return view('nomination.show', ['title' => '查看' . $nomination->title, 'nomination' => $nomination]);
+	}
 }

@@ -62,9 +62,31 @@ class VoteController extends Controller {
 		return view('vote.list', ['title' => '投票列表', 'votes' => $votes]);
 	}
 
+	public function getShow($id) {
+		$vote = Vote::find($id);
+
+		return view('vote.show', ['title' => '查看' . $vote->title, 'vote' => $vote]);
+	}
+
 	public function getAdd() {
 		$templates = Template::orderBy('id')->get();
 
 		return view('vote.add', ['title' => '添加投票', 'templates' => $templates]);
+	}
+
+	public function postSave(Request $request) {
+		$inputs = $request->all();
+
+		$vote              = new Vote();
+		$vote->title       = $inputs['title'];
+		$vote->description = nl2br($inputs['description']);
+		$vote->template_id = $inputs['template'];
+		$vote->is_active   = $inputs['is_active'];
+
+		if ($vote->save()) {
+			return redirect('vote/list')->with('status', '投票添加成功');
+		} else {
+			return back()->withErrors('投票添加失败');
+		}
 	}
 }

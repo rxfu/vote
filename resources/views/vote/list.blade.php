@@ -16,7 +16,7 @@
 				<th>#</th>
 				<th>投票名称</th>
 				<th>是否启用</th>
-				<th colspan="2">操作</th>
+				<th colspan="4">操作</th>
 			</tr>
 		</thead>
 		<tbody>

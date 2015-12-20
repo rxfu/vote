@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::controllers([
-	'auth'     => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-	'vote'     => 'VoteController',
+	'auth'       => 'Auth\AuthController',
+	'password'   => 'Auth\PasswordController',
+	'vote'       => 'VoteController',
+	'nomination' => 'NominationController',
 ]);

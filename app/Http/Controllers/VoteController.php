@@ -89,4 +89,28 @@ class VoteController extends Controller {
 			return back()->withErrors('投票添加失败');
 		}
 	}
+
+	public function getEdit($id) {
+		$vote      = Vote::find($id);
+		$templates = Template::orderBy('id')->get();
+
+		return view('vote.edit', ['title' => '编辑' . $vote->title, 'vote' => $vote, 'templates' => $templates]);
+	}
+
+	public function putUpdate(Request $request, $id) {
+		$inputs = $request->all();
+
+		$vote              = Vote::find($id);
+		$vote->title       = $inputs['title'];
+		$vote->description = nl2br($inputs['description']);
+		$vote->template_id = $inputs['template'];
+		$vote->is_active   = $inputs['is_active'];
+
+		if ($vote->save()) {
+			return redirect('vote/list')->with('status', '投票更新成功');
+		} else {
+			return back()->withErrors('投票更新失败');
+		}
+	}
+
 }

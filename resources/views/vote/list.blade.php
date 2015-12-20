@@ -34,7 +34,7 @@
 						<a href="{{ url('vote/edit', $vote->id) }}" title="编辑" role="button" class="btn btn-primary">编辑</a>
 					</td>
 					<td>
-						<form action="{{ url('vote/delete', $vote->id) }}" method="POST" role="form">
+						<form action="{{ url('vote/delete', $vote->id) }}" method="POST" role="form" name="delete" onsubmit="return confirm('你确定要删除这条记录吗？')">
 							{!! method_field('delete') !!}
 							{!! csrf_field() !!}
 							<button type="submit" class="btn btn-danger">删除</button>

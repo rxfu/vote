@@ -12,11 +12,11 @@
  */
 
 Route::get('/', function () {
-	return redirect('vote/index');
+	return redirect('vote/list');
 });
 
 Route::controllers([
 	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-	'vote'     => 'VoteCotroller',
+	'vote'     => 'VoteController',
 ]);

@@ -25,7 +25,7 @@ class VoteController extends Controller {
 			$nominations = $vote->nominations;
 			$types       = Type::all();
 
-			return view('vote.' . $vote->template->slug, ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
+			return view('templates.' . $vote->template->slug, ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
 		} else {
 			return redirect('/');
 		}

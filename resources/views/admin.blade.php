@@ -11,5 +11,5 @@
 		</li>
 	</ul>
 </div>
-@yield('content')
+@yield('main')
 @stop

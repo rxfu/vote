@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>投票系统</title>
+		<title>投票系统 - {{ $title }}</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<!-- Optional theme -->
@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header id="header" class="page-header">
-			<h1 class="text-center">广西师范大学投票系统</h1>
+			<h1 class="text-center">{{ $title }}</h1>
 		</header><!-- /header -->
 
 		<main class="container">
@@ -35,6 +35,12 @@
             @endif
 			@yield('content')
 		</main>
+
+		<footer id="footer" class="page-footer">
+			<address>
+				&copy {{ date('Y') }} 广西师范大学图书馆.版权所有.
+			</address>
+		</footer>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

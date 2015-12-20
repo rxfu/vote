@@ -12,16 +12,16 @@ class VoteController extends Controller {
 			->orderBy('updated_at')
 			->get();
 
-		return view('list', ['votes' => $votes]);
+		return view('list', ['title' => '广西师范大学', 'votes' => $votes]);
 	}
 
-	public function vote($id) {
+	public function getVote($id) {
 		$vote = Vote::find($id);
 
 		if ($vote->is_active) {
 			$nominations = $vote->nominations;
 
-			return view('vote', ['nominations' => $nominations]);
+			return view('vote', ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations]);
 		} else {
 			return redirect('/');
 		}

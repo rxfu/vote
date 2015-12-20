@@ -14,7 +14,7 @@ class CreateNominationsTable extends Migration {
 			$table->increments('id');
 			$table->integer('seq')->default(0);
 			$table->string('title')->nullable();
-			$table->binary('photo')->nullable();
+			$table->string('photo')->nullable();
 			$table->text('brief')->nullable();
 			$table->longText('detail')->nullable();
 			$table->string('link')->nullable();

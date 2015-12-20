@@ -17,6 +17,6 @@ class Vote extends Model {
 	}
 
 	public function nominations() {
-		return $this->hasMany('App\Nomination');
+		return $this->hasMany('App\Nomination')->orderBy('seq');
 	}
 }

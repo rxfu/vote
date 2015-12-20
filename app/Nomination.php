@@ -13,6 +13,6 @@ class Nomination extends Model {
 	}
 
 	public function voters() {
-		return $this->belongsToMany('App\Voter', 'ballots', 'nomination_id', 'voter_id');
+		return $this->belongsToMany('App\Voter', 'ballots', 'nomination_id', 'voter_id')->withTimestamps();
 	}
 }

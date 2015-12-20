@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Type;
 use App\Vote;
+use App\Voter;
+use Illuminate\Http\Request;
 
 class VoteController extends Controller {
 
@@ -20,10 +23,30 @@ class VoteController extends Controller {
 
 		if ($vote->is_active) {
 			$nominations = $vote->nominations;
+			$types       = Type::all();
 
-			return view('vote', ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations]);
+			return view('vote', ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
 		} else {
 			return redirect('/');
+		}
+	}
+
+	public function postVote(Request $request) {
+		$inputs = $request->all();
+
+		$voter             = new Voter();
+		$voter->ip         = $voter->aton($request->ip());
+		$voter->name       = trim($inputs['name']);
+		$voter->department = trim($inputs['department']);
+		$voter->mobile     = str_replace(' ', '', $inputs['mobile']);
+		$voter->type_id    = $inputs['type'];
+
+		if ($voter->save()) {
+			Voter::find($voter->id)->nominations()->sync($inputs['vote']);
+
+			return back()->with('status', '投票保存成功');
+		} else {
+			return back()->withErrors('投票保存失败');
 		}
 	}
 }

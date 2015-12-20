@@ -522,5 +522,6 @@ return array(
     'TemplateTableSeeder' => $baseDir . '/database/seeds/TemplateTableSeeder.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'TypeTableSeeder' => $baseDir . '/database/seeds/TypeTableSeeder.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

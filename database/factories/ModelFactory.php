@@ -31,7 +31,7 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 	return [
 		'title'       => $faker->sentence,
 		'description' => $faker->paragraph,
-		'is_active'   => $faker->boolean(),
+		'is_active'   => true,
 	];
 });
 

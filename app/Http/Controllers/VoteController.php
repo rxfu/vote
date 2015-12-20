@@ -15,7 +15,7 @@ class VoteController extends Controller {
 			->orderBy('updated_at')
 			->get();
 
-		return view('index', ['votes' => $votes]);
+		return view('vote.index', ['votes' => $votes]);
 	}
 
 	public function getVote($id) {
@@ -25,13 +25,13 @@ class VoteController extends Controller {
 			$nominations = $vote->nominations;
 			$types       = Type::all();
 
-			return view('vote', ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
+			return view('vote.' . $vote->template->slug, ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
 		} else {
 			return redirect('/');
 		}
 	}
 
-	public function postVote(Request $request) {
+	public function postVote(Request $request, $id) {
 		$inputs = $request->all();
 
 		$voter             = new Voter();
@@ -40,6 +40,7 @@ class VoteController extends Controller {
 		$voter->department = trim($inputs['department']);
 		$voter->mobile     = str_replace(' ', '', $inputs['mobile']);
 		$voter->type_id    = $inputs['type'];
+		$voter->vote_id    = $id;
 
 		if ($voter->save()) {
 			Voter::find($voter->id)->nominations()->sync($inputs['vote']);
@@ -53,6 +54,6 @@ class VoteController extends Controller {
 	public function getList() {
 		$votes = Vote::orderBy('updated_at', 'desc')->get();
 
-		return view('list', ['title' => '投票列表', 'votes' => $votes]);
+		return view('vote.list', ['title' => '投票列表', 'votes' => $votes]);
 	}
 }

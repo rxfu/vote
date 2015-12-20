@@ -20,4 +20,8 @@ class Voter extends Model {
 	public function aton($ip) {
 		return DB::raw("INET_ATON('$ip')");
 	}
+
+	public function vote() {
+		return $this->belongsTo('App\Vote');
+	}
 }

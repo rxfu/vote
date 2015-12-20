@@ -10,6 +10,8 @@ class TypeTableSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
+		DB::table('types')->truncate();
+
 		Type::create([
 			'name' => '教师',
 			'slug' => 'teacher',

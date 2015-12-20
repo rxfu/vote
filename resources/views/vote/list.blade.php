@@ -1,16 +1,6 @@
-@extends('app')
+@extends('admin')
 
 @section('content')
-<div>
-	<ul class="nav nav-pills">
-		<li role="presentation">
-			<a href="{{ url('vote/list') }}">投票列表</a>
-		</li>
-		<li role="presentation">
-			<a href="{{ url('auth/logout') }}">登出</a>
-		</li>
-	</ul>
-</div>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<div class="panel-title">{{ $title }}</div>

@@ -113,4 +113,15 @@ class VoteController extends Controller {
 		}
 	}
 
+	public function deleteDelete($id) {
+		$vote = Vote::find($id);
+
+		if (is_null($vote)) {
+			return back()->withErrors('没有这个投票');
+		} elseif ($vote->delete()) {
+			return redirect('vote/list')->with('status', '投票删除成功');
+		} else {
+			return back()->withErrors('投票删除失败');
+		}
+	}
 }

@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-	return redirect('vote/list');
+	return redirect('vote/index');
 });
 
 Route::controllers([

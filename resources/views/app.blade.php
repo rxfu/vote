@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>投票系统 - {{ $title }}</title>
+		<title>投票系统 - {{ $title or '广西师范大学' }}</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<!-- Optional theme -->
@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header id="header" class="page-header">
-			<h1 class="text-center">{{ $title }}</h1>
+			<h1 class="text-center">{{ $title or '广西师范大学' }}</h1>
 		</header><!-- /header -->
 
 		<main class="container">

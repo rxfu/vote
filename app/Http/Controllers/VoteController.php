@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
 
 class VoteController extends Controller {
 
-	public function getList() {
+	public function getIndex() {
 		$votes = Vote::where('is_active', '=', '1')
 			->orderBy('updated_at')
 			->get();
 
-		return view('list', ['title' => '广西师范大学', 'votes' => $votes]);
+		return view('index', ['votes' => $votes]);
 	}
 
 	public function getVote($id) {
@@ -48,5 +48,11 @@ class VoteController extends Controller {
 		} else {
 			return back()->withErrors('投票保存失败');
 		}
+	}
+
+	public function getList() {
+		$votes = Vote::orderBy('updated_at', 'desc')->get();
+
+		return view('list', ['title' => '投票列表', 'votes' => $votes]);
 	}
 }

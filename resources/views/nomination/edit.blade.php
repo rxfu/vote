@@ -20,13 +20,13 @@
 		<div class="form-group">
 			<label for="brief" class="col-md-2 control-label">摘要</label>
 			<div class="col-md-10">
-				<textarea name="brief" id="brief" class="form-control" rows="10" placeholder="摘要" value="{{ $nomination->brief }}"></textarea>
+				<textarea name="brief" id="brief" class="form-control" rows="10" placeholder="摘要">{{ $nomination->brief }}</textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="detail" class="col-md-2 control-label">内容</label>
 			<div class="col-md-10">
-				<textarea name="detail" id="detail" class="form-control" rows="10" placeholder="内容" value="{{ $nomination->detail }}"></textarea>
+				<textarea name="detail" id="detail" class="form-control" rows="10" placeholder="内容" >{{ $nomination->detail }}</textarea>
 			</div>
 		</div>
 		<div class="form-group">

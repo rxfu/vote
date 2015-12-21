@@ -5,7 +5,7 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<div class="text-right">
-				<a href="{{ url('nomination/add') }}" title="添加候选"  role="button" class="btn btn-success">添加候选</a>
+				<a href="{{ url('nomination/add', $id) }}" title="添加候选"  role="button" class="btn btn-success">添加候选</a>
 			</div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 				<th>照片</th>
 				<th>链接</th>
 				<th>投票号</th>
-				<th colspan="4">操作</th>
+				<th colspan="3">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,7 +28,13 @@
 					<td>{{ $nomination->seq }}</td>
 					<td>{{ $nomination->title }}</td>
 					<td>{{ $nomination->brief }}</td>
-					<td>{{ $nomination->photo }}</td>
+					<td>
+						@if (is_null($nomination->photo))
+							无图片
+						@else
+							<img src="{{ asset('uploads/' . $nomination->photo) }}" title="{{ $nomination->title }}" width="150">
+						@endif
+					</td>
 					<td>
 						<a href="{{ $nomination->link }}" title="{{ $nomination->title }}">{{ $nomination->link }}</a>
 					</td>

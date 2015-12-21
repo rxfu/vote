@@ -2,39 +2,52 @@
 
 @section('main')
 <div>
-	<form action="{{ url('vote/save') }}" method="POST" role="form" class="form-horizontal">
+	<form action="{{ url('nomination/save') }}" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
 		{!! csrf_field() !!}
 		<div class="form-group">
-			<label for="title" class="col-md-2 control-label">投票名称</label>
+			<label for="seq" class="col-md-2 control-label">序号</label>
 			<div class="col-md-10">
-				<input type="text" name="title" id="title" class="form-control" placeholder="投票名称">
+				<input type="text" name="seq" id="seq" class="form-control" placeholder="序号">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="description" class="col-md-2 control-label">投票简介</label>
+			<label for="title" class="col-md-2 control-label">标题</label>
 			<div class="col-md-10">
-				<textarea name="description" id="description" class="form-control" rows="10" placeholder="投票简介"></textarea>
+				<input type="text" name="title" id="title" class="form-control" placeholder="标题">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="template" class="col-md-2 control-label">界面模板</label>
+			<label for="brief" class="col-md-2 control-label">摘要</label>
 			<div class="col-md-10">
-				<select class="form-control" name="template" id="template">
-					@foreach ($templates as $template)
-						<option value="{{ $template->id }}">{{ $template->name }}</option>
+				<textarea name="brief" id="brief" class="form-control" rows="10" placeholder="摘要"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="detail" class="col-md-2 control-label">内容</label>
+			<div class="col-md-10">
+				<textarea name="detail" id="detail" class="form-control" rows="10" placeholder="内容"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="link" class="col-md-2 control-label">链接</label>
+			<div class="col-md-10">
+				<input type="text" name="link" id="link" class="form-control" placeholder="链接">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="photo" class="col-md-2 control-label">图片</label>
+			<div class="col-md-10">
+				<input type="file" name="photo" id="photo" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="vote" class="col-md-2 control-label">投票名</label>
+			<div class="col-md-10">
+				<select class="form-control" name="vote" id="vote">
+					@foreach ($votes as $vote)
+						<option value="{{ $vote->id }}">{{ $vote->title }}</option>
 					@endforeach
 				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="is_active" class="col-md-2 control-label">是否启用</label>
-			<div class="col-md-10">
-				<label class="radio-inline">
-					<input type="radio" name="is_active" value="1" checked>&nbsp;启用
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="is_active" value="0">&nbsp;禁用
-				</label>
 			</div>
 		</div>
 		<div class="form-group">

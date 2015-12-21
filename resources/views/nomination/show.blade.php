@@ -34,12 +34,12 @@
 			</td>
 		</tr>
 		<tr>
-			<th class="col-md-4 text-right">照片</th>
+			<th class="col-md-4 text-right">图片</th>
 			<td class="col-md-8 text-left">
 				@if (is_null($nomination->photo))
-					无照片
+					无图片
 				@else
-					<img src="{{ $nomination->photo }}" title="{{ $nomination->title }}">
+					<img src="{{ asset('uploads/' . $nomination->photo) }}" title="{{ $nomination->title }}" width="400">
 				@endif
 			</td>
 		</tr>

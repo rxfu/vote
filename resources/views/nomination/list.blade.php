@@ -5,7 +5,7 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<div class="text-right">
-				<a href="{{ url('nomination/add') }}" title="添加条目"  role="button" class="btn btn-success">添加条目</a>
+				<a href="{{ url('nomination/add') }}" title="添加候选"  role="button" class="btn btn-success">添加候选</a>
 			</div>
 		</div>
 	</div>

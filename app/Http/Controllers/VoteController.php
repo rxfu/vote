@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class VoteController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote']]);
+		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote', 'getStatistics']]);
 	}
 
 	public function getIndex() {
@@ -50,7 +50,7 @@ class VoteController extends Controller {
 		if ($voter->save()) {
 			Voter::find($voter->id)->nominations()->sync($inputs['vote']);
 
-			return back()->with('status', '投票保存成功');
+			return redirect('vote/statistics/' . $id)->with('status', '投票保存成功');
 		} else {
 			return back()->withErrors('投票保存失败');
 		}
@@ -123,5 +123,11 @@ class VoteController extends Controller {
 		} else {
 			return back()->withErrors('投票删除失败');
 		}
+	}
+
+	public function getStatistics($id) {
+		$vote = Vote::find($id);
+
+		return view('vote.statistics', ['title' => $vote->title . '统计', 'nominations' => $vote->nominations]);
 	}
 }

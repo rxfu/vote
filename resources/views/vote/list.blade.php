@@ -28,7 +28,7 @@
 					</td>
 					<td>{{ $vote->is_active ? '是' : '否' }}</td>
 					<td>
-						<a href="{{ url('vote/statistics', $vote->id) }}" title="统计" role="button" class="btn btn-warning">统计</a>
+						<a href="{{ url('vote/statistics', $vote->id) }}" title="统计" role="button" class="btn btn-info">统计</a>
 					</td>
 					<td>
 						<a href="{{ url('vote/show', $vote->id) }}" title="查看" role="button" class="btn btn-warning">查看</a>

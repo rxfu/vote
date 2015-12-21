@@ -2,40 +2,54 @@
 
 @section('main')
 <div>
-	<form action="{{ url('vote/update', $vote->id) }}" method="POST" role="form" class="form-horizontal">
+	<form action="{{ url('nomination/update', $nomination->id) }}" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
 		{!! method_field('put') !!}
 		{!! csrf_field() !!}
 		<div class="form-group">
-			<label for="title" class="col-md-2 control-label">投票名称</label>
+			<label for="seq" class="col-md-2 control-label">序号</label>
 			<div class="col-md-10">
-				<input type="text" name="title" id="title" class="form-control" placeholder="投票名称" value="{{ $vote->title }}">
+				<input type="text" name="seq" id="seq" class="form-control" placeholder="序号" value="{{ $nomination->seq }}">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="description" class="col-md-2 control-label">投票简介</label>
+			<label for="title" class="col-md-2 control-label">标题</label>
 			<div class="col-md-10">
-				<textarea name="description" id="description" class="form-control" rows="10" placeholder="投票简介">{{ $vote->description }}</textarea>
+				<input type="text" name="title" id="title" class="form-control" placeholder="标题" value="{{ $nomination->title }}">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="template" class="col-md-2 control-label">界面模板</label>
+			<label for="brief" class="col-md-2 control-label">摘要</label>
 			<div class="col-md-10">
-				<select class="form-control" name="template" id="template">
-					@foreach ($templates as $template)
-						<option value="{{ $template->id }}"{{ $template->id == $vote->template_id ? ' selected' : '' }}>{{ $template->name }}</option>
+				<textarea name="brief" id="brief" class="form-control" rows="10" placeholder="摘要" value="{{ $nomination->brief }}"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="detail" class="col-md-2 control-label">内容</label>
+			<div class="col-md-10">
+				<textarea name="detail" id="detail" class="form-control" rows="10" placeholder="内容" value="{{ $nomination->detail }}"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="link" class="col-md-2 control-label">链接</label>
+			<div class="col-md-10">
+				<input type="text" name="link" id="link" class="form-control" placeholder="链接" value="{{ $nomination->link }}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="photo" class="col-md-2 control-label">图片</label>
+			<div class="col-md-10">
+				<img src="{{ asset($nomination->photo) }}" alt="{{ $nomination->title }}" width="150">
+				<input type="file" name="photo" id="photo" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="vote" class="col-md-2 control-label">投票名</label>
+			<div class="col-md-10">
+				<select class="form-control" name="vote" id="vote">
+					@foreach ($votes as $vote)
+						<option value="{{ $vote->id }}"{{ $vote->id == $nomination->vote_id ? ' selected' : '' }}>{{ $vote->title }}</option>
 					@endforeach
 				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="is_active" class="col-md-2 control-label">是否启用</label>
-			<div class="col-md-10">
-				<label class="radio-inline">
-					<input type="radio" name="is_active" value="1"{{ $vote->is_active == 1 ? ' checked' : '' }}>&nbsp;启用
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="is_active" value="0"{{ $vote->is_active == 0 ? ' checked' : '' }}>&nbsp;禁用
-				</label>
 			</div>
 		</div>
 		<div class="form-group">

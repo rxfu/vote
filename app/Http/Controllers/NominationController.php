@@ -62,7 +62,7 @@ class NominationController extends Controller {
 				$file     = $inputs['photo'];
 				$filename = time() . '.' . $file->getClientOriginalExtension();
 				$file->move($this->upload, $filename);
-				$nomination->photo = $filename;
+				$nomination->photo = $this->upload . $filename;
 			}
 
 			if ($nomination->save()) {
@@ -73,5 +73,46 @@ class NominationController extends Controller {
 		} else {
 			return back()->withErrors($validator);
 		}
+	}
+
+	public function getEdit($id) {
+		$nomination = Nomination::find($id);
+		$votes      = Vote::where('is_active', '=', true)->get();
+
+		return view('nomination.edit', ['title' => '编辑' . $nomination->title, 'nomination' => $nomination, 'votes' => $votes]);
+	}
+
+	public function putUpdate(Request $request, $id) {
+		$inputs = $request->all();
+		$rules  = [
+			'photo' => 'image',
+		];
+		$validator = Validator::make($inputs, $rules);
+
+		if ($validator->passes()) {
+			$nomination          = Nomination::find($id);
+			$nomination->seq     = $inputs['seq'];
+			$nomination->title   = $inputs['title'];
+			$nomination->brief   = $inputs['brief'];
+			$nomination->detail  = $inputs['detail'];
+			$nomination->link    = $inputs['link'];
+			$nomination->vote_id = $inputs['vote'];
+
+			if ($request->hasFile('photo') && $inputs['photo']->isValid()) {
+				$file     = $inputs['photo'];
+				$filename = time() . '.' . $file->getClientOriginalExtension();
+				$file->move($this->upload, $filename);
+				$nomination->photo = $this->upload . $filename;
+			}
+
+			if ($nomination->save()) {
+				return redirect('nomination/list')->with('status', '候选投票更新成功');
+			} else {
+				return back()->withErrors('候选投票更新失败');
+			}
+		} else {
+			return back()->withErrors($validator);
+		}
+
 	}
 }

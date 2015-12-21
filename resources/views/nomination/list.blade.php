@@ -32,7 +32,7 @@
 						@if (is_null($nomination->photo))
 							无图片
 						@else
-							<img src="{{ asset('uploads/' . $nomination->photo) }}" title="{{ $nomination->title }}" width="150">
+							<img src="{{ asset($nomination->photo) }}" title="{{ $nomination->title }}" width="150">
 						@endif
 					</td>
 					<td>

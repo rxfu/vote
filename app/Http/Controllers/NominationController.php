@@ -113,6 +113,17 @@ class NominationController extends Controller {
 		} else {
 			return back()->withErrors($validator);
 		}
+	}
 
+	public function deleteDelete($id) {
+		$nomination = Nomination::find($id);
+
+		if (is_null($nomination)) {
+			return back()->withErrors('没有这个候选投票');
+		} elseif ($nomination->delete()) {
+			return redirect('nomination/list')->with('status', '候选投票删除成功');
+		} else {
+			return back()->withErrors('候选投票删除失败');
+		}
 	}
 }

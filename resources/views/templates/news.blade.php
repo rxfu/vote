@@ -32,7 +32,9 @@
 						</p>
 					@endif
 					@if (!is_null($nomination->photo))
-						<img src="{{ $nomination->photo }}" alt="{{ $nomination->title }}">
+						<div class="text-center">
+							<img src="{{ asset($nomination->photo) }}" alt="{{ $nomination->title }}" width="300">
+						</div>
 					@endif
 				</div>
 			</div>

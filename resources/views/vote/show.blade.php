@@ -1,6 +1,6 @@
-@extends('admin')
+@extends('app')
 
-@section('main')
+@section('content')
 <div class="panel panel-default">
 	<table class="table table-striped">
 		<tr>

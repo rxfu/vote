@@ -1,6 +1,6 @@
-@extends('admin')
+@extends('app')
 
-@section('main')
+@section('content')
 <div>
 	<form action="{{ url('vote/update', $vote->id) }}" method="POST" role="form" class="form-horizontal">
 		{!! method_field('put') !!}

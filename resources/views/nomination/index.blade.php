@@ -1,9 +1,6 @@
 @extends('app')
 
 @section('content')
-<div class="text-right">
-	<a href="{{ url('auth/login') }}">管理</a>
-</div>
 <div>
 	<ol class="list-group">
 		@foreach ($votes as $vote)

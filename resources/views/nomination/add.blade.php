@@ -1,6 +1,6 @@
-@extends('admin')
+@extends('app')
 
-@section('main')
+@section('content')
 <div>
 	<form action="{{ url('nomination/save') }}" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
 		{!! csrf_field() !!}

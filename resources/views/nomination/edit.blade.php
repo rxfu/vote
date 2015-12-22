@@ -1,6 +1,6 @@
-@extends('admin')
+@extends('app')
 
-@section('main')
+@section('content')
 <div>
 	<form action="{{ url('nomination/update', $nomination->id) }}" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
 		{!! method_field('put') !!}

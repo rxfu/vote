@@ -6,6 +6,8 @@
 		<div class="panel-title">{{ $title }}</div>
 	</div>
 
+	<div id="chart"></div>
+
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>

@@ -65,5 +65,6 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/highcharts.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
 	</body>
 </html>

@@ -23,14 +23,17 @@ class VoteController extends Controller {
 		return view('vote.index', ['votes' => $votes]);
 	}
 
-	public function getVote($id) {
+	public function getVote(Request $request, $id) {
 		$vote = Vote::find($id);
 
 		if ($vote->is_active) {
 			$nominations = $vote->nominations;
 			$types       = Type::all();
+			$voted       = Voter::where('vote_id', '=', $id)
+				->where('ip', '=', sprintf('%u', ip2long($request->ip())))
+				->count();
 
-			return view('templates.' . $vote->template->slug, ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types]);
+			return view('templates.' . $vote->template->slug, ['title' => $vote->title, 'vote' => $vote, 'nominations' => $nominations, 'types' => $types, 'voted' => $voted]);
 		} else {
 			return redirect('/');
 		}

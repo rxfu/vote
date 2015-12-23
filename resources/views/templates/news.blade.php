@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('content')
+@if ($voted)
+<script>
+	alert('你已投过票，请不要重复投票！');
+</script>
+@endif
 <div class="well">
 	<p>{{ $vote->description }}</p>
 </div>

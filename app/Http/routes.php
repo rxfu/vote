@@ -20,4 +20,5 @@ Route::controllers([
 	'password'   => 'Auth\PasswordController',
 	'vote'       => 'VoteController',
 	'nomination' => 'NominationController',
+	'template'   => 'TemplateController',
 ]);

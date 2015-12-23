@@ -35,19 +35,23 @@
             @endif
 			<div class="text-right">
             @if (Auth::check())
+				欢迎你，{{ Auth::user()->username }}！
 				<ul class="nav nav-pills">
 					<li role="presentation">
-						<a href="{{ url('nomination/list') }}">候选列表</a>
+						<a href="{{ url('template/list') }}" title="模板列表">模板列表</a>
 					</li>
 					<li role="presentation">
-						<a href="{{ url('vote/list') }}">投票列表</a>
+						<a href="{{ url('nomination/list') }}" title="候选列表">候选列表</a>
 					</li>
 					<li role="presentation">
-						<a href="{{ url('auth/logout') }}">登出</a>
+						<a href="{{ url('vote/list') }}" title="投票列表">投票列表</a>
+					</li>
+					<li role="presentation">
+						<a href="{{ url('auth/logout') }}" title="登出">登出</a>
 					</li>
 				</ul>
 			@else
-				<a href="{{ url('auth/login') }}">管理</a>
+				<a href="{{ url('auth/login') }}" title="管理">管理</a>
             @endif
 			</div>
 			@yield('content')

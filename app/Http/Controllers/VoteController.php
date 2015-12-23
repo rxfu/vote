@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class VoteController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote', 'getStatistics']]);
+		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote', 'getStatistics', 'getChart']]);
 	}
 
 	public function getIndex() {
@@ -128,6 +128,19 @@ class VoteController extends Controller {
 	public function getStatistics($id) {
 		$vote = Vote::find($id);
 
-		return view('vote.statistics', ['title' => $vote->title . '统计', 'nominations' => $vote->nominations]);
+		return view('vote.statistics', ['title' => $vote->title . '统计', 'id' => $id, 'nominations' => $vote->nominations]);
+	}
+
+	public function getChart($id) {
+		$vote = Vote::find($id);
+
+		$data['legend']         = $vote->title . '统计图';
+		$data['series']['name'] = '票数';
+		foreach ($vote->nominations as $nomination) {
+			$data['categories'][]     = $nomination->title;
+			$data['series']['data'][] = $nomination->voters->count();
+		}
+
+		return response()->json($data);
 	}
 }

@@ -6,7 +6,7 @@
 		<div class="panel-title">{{ $title }}</div>
 	</div>
 
-	<div id="chart"></div>
+	<div id="chart" data-seq="{{ $id }}"></div>
 
 	<table class="table table-striped table-bordered">
 		<thead>

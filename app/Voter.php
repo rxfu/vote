@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Voter extends Model {
 
@@ -17,11 +16,15 @@ class Voter extends Model {
 		return $this->belongsTo('App\Type');
 	}
 
-	public function aton($ip) {
-		return DB::raw("INET_ATON('$ip')");
-	}
-
 	public function vote() {
 		return $this->belongsTo('App\Vote');
+	}
+
+	public function getIpAttribute($value) {
+		return long2ip($value);
+	}
+
+	public function setIpAttribute($value) {
+		$this->attributes['ip'] = sprintf('%u', ip2long($value));
 	}
 }

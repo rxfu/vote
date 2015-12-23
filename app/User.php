@@ -35,4 +35,9 @@ CanResetPasswordContract {
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	protected $casts = [
+		'is_super'  => 'boolean',
+		'is_active' => 'boolean',
+	];
 }

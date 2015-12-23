@@ -40,7 +40,7 @@ class VoteController extends Controller {
 		$inputs = $request->all();
 
 		$voter             = new Voter();
-		$voter->ip         = $voter->aton($request->ip());
+		$voter->ip         = $request->ip();
 		$voter->name       = trim($inputs['name']);
 		$voter->department = trim($inputs['department']);
 		$voter->mobile     = str_replace(' ', '', $inputs['mobile']);

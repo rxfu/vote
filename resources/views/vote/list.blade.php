@@ -16,7 +16,7 @@
 				<th>#</th>
 				<th>投票名称</th>
 				<th>是否启用</th>
-				<th colspan="4">操作</th>
+				<th colspan="5">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +29,9 @@
 					<td>{{ $vote->is_active ? '是' : '否' }}</td>
 					<td>
 						<a href="{{ url('vote/statistics', $vote->id) }}" title="统计" role="button" class="btn btn-info">统计</a>
+					</td>
+					<td>
+						<a href="{{ url('voter/list', $vote->id) }}" title="详细" role="button" class="btn btn-success">详细</a>
 					</td>
 					<td>
 						<a href="{{ url('vote/show', $vote->id) }}" title="查看" role="button" class="btn btn-warning">查看</a>

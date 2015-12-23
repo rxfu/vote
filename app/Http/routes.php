@@ -21,4 +21,5 @@ Route::controllers([
 	'vote'       => 'VoteController',
 	'nomination' => 'NominationController',
 	'template'   => 'TemplateController',
+	'voter'      => 'VoterController',
 ]);

@@ -40,4 +40,8 @@ CanResetPasswordContract {
 		'is_super'  => 'boolean',
 		'is_active' => 'boolean',
 	];
+
+	public function votes() {
+		return $this->hasMany('App\Vote')->orderBy('updated_at', 'desc');
+	}
 }

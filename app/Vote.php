@@ -23,4 +23,8 @@ class Vote extends Model {
 	public function voters() {
 		return $this->hasMany('App\Voter');
 	}
+
+	public function user() {
+		return $this->belongsTo('App\User');
+	}
 }

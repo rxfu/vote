@@ -20,6 +20,8 @@ class TemplateTableSeeder extends Seeder {
 
 		App\Template::find(1)->get()->each(function ($tpl) {
 			$tpl->votes()->saveMany(factory(App\Vote::class, 2)->create()->each(function ($v) {
+				$v->user_id = '1';
+				$v->save();
 				$v->nominations()->saveMany(factory(App\Nomination::class, 10)->make());
 			}));
 		});

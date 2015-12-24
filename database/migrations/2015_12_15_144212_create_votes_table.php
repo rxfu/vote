@@ -16,9 +16,11 @@ class CreateVotesTable extends Migration {
 			$table->longText('description')->nullable();
 			$table->integer('template_id')->unsigned();
 			$table->boolean('is_active')->default(false);
+			$table->integer('user_id')->unsigned();
 			$table->timestamps();
 
 			$table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
 		});
 	}
 

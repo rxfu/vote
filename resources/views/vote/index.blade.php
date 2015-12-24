@@ -8,7 +8,7 @@
 				<a href="{{ url('vote/vote', $vote->id) }}" class="list-group-item">
 					<span class="badge">{{ $vote->nominations->count() }}</span>
 					<h4 class="list-group-item-heading">{{ $vote->title }}</h4>
-					<p class="list-group-item-text">{{ $vote->description }}</p>
+					<p class="list-group-item-text">{{ $vote->brief }}</p>
 				</a>
 			</li>
 		@endforeach

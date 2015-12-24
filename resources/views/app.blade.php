@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	</head>
 	<body>
 		<header id="header" class="page-header">

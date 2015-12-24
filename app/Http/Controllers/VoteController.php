@@ -16,6 +16,18 @@ class VoteController extends Controller {
 		$this->middleware('auth', ['except' => ['getIndex', 'getVote', 'postVote', 'getStatistics', 'getChart']]);
 	}
 
+	private function nl2p($text) {
+		$str = trim($text);
+		$str = '<p>' . $str;
+		$str = str_replace("\r\n", "</p>\n<p>", $str);
+		$str = $str . "</p>\n";
+		$str = str_replace("<p></p>", '', $str);
+		$str = str_replace("\n", '', $str);
+		$str = str_replace("</p>", "</p>\n", $str);
+
+		return $str;
+	}
+
 	public function getIndex() {
 		$votes = Vote::where('is_active', '=', '1')
 			->orderBy('updated_at')
@@ -83,7 +95,7 @@ class VoteController extends Controller {
 
 		$vote              = new Vote();
 		$vote->title       = $inputs['title'];
-		$vote->description = nl2br($inputs['description']);
+		$vote->description = $this->nl2p($inputs['description']);
 		$vote->template_id = $inputs['template'];
 		$vote->is_active   = $inputs['is_active'];
 		$vote->user_id     = Auth::user()->id;
@@ -107,7 +119,7 @@ class VoteController extends Controller {
 
 		$vote              = Vote::find($id);
 		$vote->title       = $inputs['title'];
-		$vote->description = nl2br($inputs['description']);
+		$vote->description = $this->nl2p($inputs['description']);
 		$vote->template_id = $inputs['template'];
 		$vote->is_active   = $inputs['is_active'];
 

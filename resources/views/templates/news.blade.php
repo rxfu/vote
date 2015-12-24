@@ -6,16 +6,16 @@
 	alert('你已投过票，请不要重复投票！');
 </script>
 @endif
-<div class="well">
-	<p>{{ $vote->description }}</p>
-</div>
+<blockquote>
+	{!! $vote->description !!}
+</blockquote>
 
 <div>
 	<?php $i = 0;?>
 	<form action="{{ url('vote/vote', $vote->id) }}" method="POST" name="voteForm" id="voteForm" role="form">
 		{!! csrf_field() !!}
 		@foreach ($nominations as $nomination)
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">
 						<label>
@@ -27,11 +27,19 @@
 					</div>
 				</div>
 				<div class="panel-body">
+					@if (!is_null($nomination->brief))
+						<p>
+							{{ $nomination->brief }}
+						</p>
+					@endif
 					@if (!is_null($nomination->detail))
-						<p>{{ $nomination->detail }}</p>
+						<p>
+							{!! $nomination->detail !!}
+						</p>
 					@endif
 					@if (!is_null($nomination->link))
-						<p>原文报道链接：
+						<p>
+							原文报道链接：
 							<ul>
 								@foreach (explode('|', $nomination->link) as $url)
 									<a href="{{ $url }}" title="{{ $nomination->title }}">{{ $url }}</a>

@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('main')
+@section('content')
 <div>
 	<form action="{{ url('vote/save') }}" method="POST" role="form" class="form-horizontal">
 		{!! csrf_field() !!}

@@ -19,7 +19,10 @@
 				<div class="panel-heading">
 					<div class="panel-title">
 						<label>
-							<input type="checkbox" name="vote[]" id="{{ $nomination->id }}" aria-label="{{ $nomination->title }}" title="投票" value="{{ $nomination->id }}"> {{ '#' . ++$i . '. ' . $nomination->title }}
+							@if (!$voted)
+								<input type="checkbox" name="vote[]" id="{{ $nomination->id }}" aria-label="{{ $nomination->title }}" title="投票" value="{{ $nomination->id }}">
+							@endif
+							{{ '#' . ++$i . '. ' . $nomination->title }}
 						</label>
 					</div>
 				</div>
@@ -65,9 +68,11 @@
 				<label for="mobile">联系电话（手机）</label>
 				<input type="text" name="mobile" id="mobile" class="form-control" placeholder="联系电话（手机）">
 			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block">投票</button>
-			</div>
+			@if (!$voted)
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block">投票</button>
+				</div>
+			@endif
 		</div>
 	</form>
 </div>

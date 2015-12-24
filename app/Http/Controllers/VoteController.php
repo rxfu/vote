@@ -85,6 +85,7 @@ class VoteController extends Controller {
 		$vote->description = nl2br($inputs['description']);
 		$vote->template_id = $inputs['template'];
 		$vote->is_active   = $inputs['is_active'];
+		$vote->user_id     = Auth::user()->id;
 
 		if ($vote->save()) {
 			return redirect('vote/list')->with('status', '投票添加成功');

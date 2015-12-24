@@ -8,6 +8,7 @@ use App\Type;
 use App\Vote;
 use App\Voter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VoteController extends Controller {
 

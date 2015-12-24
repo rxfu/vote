@@ -14,7 +14,7 @@
 		<div class="form-group">
 			<label for="description" class="col-md-2 control-label">投票简介</label>
 			<div class="col-md-10">
-				<textarea name="description" id="description" class="form-control" rows="10" placeholder="投票简介">{{ strip_tags($vote->description, '<br />') }}</textarea>
+				<textarea name="description" id="description" class="form-control" rows="10" placeholder="投票简介">{{ strip_tags($vote->description) }}</textarea>
 			</div>
 		</div>
 		<div class="form-group">

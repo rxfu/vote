@@ -42,14 +42,16 @@
 							原文报道链接：
 							<ul>
 								@foreach (explode('|', $nomination->link) as $url)
-									<a href="{{ $url }}" title="{{ $nomination->title }}">{{ $url }}</a>
+									<li>
+										<a href="{{ $url }}" title="{{ $nomination->title }}">{{ $url }}</a>
+									</li>
 								@endforeach
 							</ul>
 						</p>
 					@endif
 					@if (!is_null($nomination->photo))
 						<div class="text-center">
-							<img src="{{ asset($nomination->photo) }}" alt="{{ $nomination->title }}" width="300">
+							<img src="{{ asset($nomination->photo) }}" alt="{{ $nomination->title }}" width="600">
 						</div>
 					@endif
 				</div>

@@ -16,6 +16,18 @@ class NominationController extends Controller {
 		$this->middleware('auth');
 	}
 
+	private function nl2p($text) {
+		$str = trim($text);
+		$str = '<p>' . $str;
+		$str = str_replace("\r\n", "</p>\n<p>", $str);
+		$str = $str . "</p>\n";
+		$str = str_replace("<p></p>", '', $str);
+		$str = str_replace("\n", '', $str);
+		$str = str_replace("</p>", "</p>\n", $str);
+
+		return $str;
+	}
+
 	public function getList($id = null) {
 		if (is_null($id)) {
 			$nominations = Nomination::orderBy('seq')->get();
@@ -54,7 +66,7 @@ class NominationController extends Controller {
 			$nomination->seq     = $inputs['seq'];
 			$nomination->title   = $inputs['title'];
 			$nomination->brief   = $inputs['brief'];
-			$nomination->detail  = $inputs['detail'];
+			$nomination->detail  = $this->nl2p($inputs['detail']);
 			$nomination->link    = $inputs['link'];
 			$nomination->vote_id = $inputs['vote'];
 
@@ -94,7 +106,7 @@ class NominationController extends Controller {
 			$nomination->seq     = $inputs['seq'];
 			$nomination->title   = $inputs['title'];
 			$nomination->brief   = $inputs['brief'];
-			$nomination->detail  = $inputs['detail'];
+			$nomination->detail  = $this->nl2p($inputs['detail']);
 			$nomination->link    = $inputs['link'];
 			$nomination->vote_id = $inputs['vote'];
 

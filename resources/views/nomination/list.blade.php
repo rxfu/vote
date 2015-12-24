@@ -36,7 +36,13 @@
 						@endif
 					</td>
 					<td>
-						<a href="{{ $nomination->link }}" title="{{ $nomination->title }}">{{ $nomination->link }}</a>
+						<ul>
+							@foreach (explode('|', $nomination->link) as $url)
+								<li>
+									<a href="{{ $url }}" title="{{ $nomination->title }}">{{ $url }}</a>
+								</li>
+							@endforeach
+						</ul>
 					</td>
 					<td>{{ $nomination->vote_id }}</td>
 					<td>

@@ -38,6 +38,7 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Nomination::class, function (Faker\Generator $faker) {
 	return [
+		'seq'    => $faker->randomDigit,
 		'title'  => $faker->sentence,
 		'brief'  => $faker->paragraph,
 		'detail' => $faker->text,

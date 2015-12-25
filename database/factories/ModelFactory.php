@@ -32,6 +32,7 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 		'title'       => $faker->sentence,
 		'description' => $faker->paragraph,
 		'is_active'   => true,
+		'limit'       => $fake->randomDigit,
 	];
 });
 

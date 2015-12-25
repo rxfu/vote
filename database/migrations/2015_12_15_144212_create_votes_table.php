@@ -14,6 +14,7 @@ class CreateVotesTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->longText('description')->nullable();
+			$table->integer('limit')->unsigned()->default(0);
 			$table->integer('template_id')->unsigned();
 			$table->boolean('is_active')->default(false);
 			$table->integer('user_id')->unsigned();

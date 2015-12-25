@@ -15,6 +15,7 @@
 			<tr>
 				<th>#</th>
 				<th>投票名称</th>
+				<th>投票限制</th>
 				<th>是否启用</th>
 				<th>创建者</th>
 				<th colspan="5">操作</th>
@@ -27,6 +28,7 @@
 					<td>
 						<a href="{{ url('nomination/list', $vote->id) }}" title="{{ $vote->title }}">{{ $vote->title }}</a>
 					</td>
+					<td>{{ $vote->limit }}</td>
 					<td>{{ $vote->is_active ? '是' : '否' }}</td>
 					<td>{{ $vote->user->username }}</td>
 					<td>

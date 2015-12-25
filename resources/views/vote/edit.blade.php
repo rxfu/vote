@@ -28,6 +28,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="limit" class="col-md-2 control-label">投票限制</label>
+			<div class="col-md-10">
+				<input type="text" name="limit" id="limit" class="form-control" placeholder="投票限制" value="{{ $vote->limit }}">
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="is_active" class="col-md-2 control-label">是否启用</label>
 			<div class="col-md-10">
 				<label class="radio-inline">

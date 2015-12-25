@@ -16,6 +16,10 @@
 			<td class="col-md-8 text-left">{{ $vote->template->name }}</td>
 		</tr>
 		<tr>
+			<th class="col-md-4 text-right">投票限制</th>
+			<td class="col-md-8 text-left">{{ $vote->limit }}</td>
+		</tr>
+		<tr>
 			<th class="col-md-4 text-right">是否启用</th>
 			<td class="col-md-8 text-left">{{ $vote->is_active ? '是' : '否' }}</td>
 		</tr>

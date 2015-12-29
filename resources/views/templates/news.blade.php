@@ -4,6 +4,7 @@
 @if ($voted)
 <script>
 	alert('你已投过票，请不要重复投票！');
+	window.location="{{ url('vote/statistics', $vote->id) }}";
 </script>
 @endif
 <blockquote>
@@ -57,6 +58,7 @@
 				</div>
 			</div>
 		@endforeach
+		@if (!$voted)
 		<div class="form-inline">
 			<div class="form-group">
 				<label for="name">姓名</label>
@@ -78,12 +80,11 @@
 				<label for="mobile">联系电话（手机）</label>
 				<input type="text" name="mobile" id="mobile" class="form-control" placeholder="联系电话（手机）">
 			</div>
-			@if (!$voted)
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block">投票</button>
-				</div>
-			@endif
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block">投票</button>
+			</div>
 		</div>
+		@endif
 	</form>
 </div>
 @stop

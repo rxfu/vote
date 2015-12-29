@@ -7,10 +7,11 @@
 	window.location="{{ url('vote/statistics', $vote->id) }}";
 </script>
 @endif
-<blockquote>
-	{!! $vote->description !!}
-</blockquote>
-
+@if ($vote->description)
+	<blockquote>
+		{!! $vote->description !!}
+	</blockquote>
+@endif
 <div>
 	<?php $i = 0;?>
 	<form action="{{ url('vote/vote', $vote->id) }}" method="POST" name="voteForm" id="voteForm" role="form">
@@ -28,17 +29,17 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					@if (!is_null($nomination->brief))
+					@if ($nomination->brief)
 						<p>
 							{{ $nomination->brief }}
 						</p>
 					@endif
-					@if (!is_null($nomination->detail))
+					@if ($nomination->detail)
 						<p>
 							{!! $nomination->detail !!}
 						</p>
 					@endif
-					@if (!is_null($nomination->link))
+					@if ($nomination->link)
 						<p>
 							原文报道链接：
 							<ul>
@@ -50,7 +51,7 @@
 							</ul>
 						</p>
 					@endif
-					@if (!is_null($nomination->photo))
+					@if ($nomination->photo)
 						<div class="text-center">
 							<img src="{{ asset($nomination->photo) }}" alt="{{ $nomination->title }}" width="600">
 						</div>

@@ -31,12 +31,14 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 	return [
 		'title'       => $faker->sentence,
 		'description' => $faker->paragraph,
-		'is_active'   => true,
+		'is_active'   => $faker->boolean(),
+		'limit'       => $faker->randomDigit,
 	];
 });
 
 $factory->define(App\Nomination::class, function (Faker\Generator $faker) {
 	return [
+		'seq'    => $faker->randomDigit,
 		'title'  => $faker->sentence,
 		'brief'  => $faker->paragraph,
 		'detail' => $faker->text,

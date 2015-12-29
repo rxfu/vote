@@ -27,7 +27,7 @@ CanResetPasswordContract {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['username', 'email', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -40,6 +40,10 @@ CanResetPasswordContract {
 		'is_super'  => 'boolean',
 		'is_active' => 'boolean',
 	];
+
+	public function setPasswordAttribute($value) {
+		$this->attributes['password'] = bcrypt($value);
+	}
 
 	public function votes() {
 		return $this->hasMany('App\Vote')->orderBy('updated_at', 'desc');

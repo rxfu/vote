@@ -41,10 +41,6 @@ CanResetPasswordContract {
 		'is_active' => 'boolean',
 	];
 
-	public function setPasswordAttribute($value) {
-		$this->attributes['password'] = bcrypt($value);
-	}
-
 	public function votes() {
 		return $this->hasMany('App\Vote')->orderBy('updated_at', 'desc');
 	}

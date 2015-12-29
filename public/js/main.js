@@ -3,7 +3,8 @@ $(function() {
     $.getJSON('/vote/vote/chart/' + id, function(json) {
         $('#chart').highcharts({
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: '800'
             },
             title: {
                 text: json.legend

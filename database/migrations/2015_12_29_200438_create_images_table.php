@@ -15,8 +15,11 @@ class CreateImagesTable extends Migration {
 			$table->string('name');
 			$table->string('path');
 			$table->string('type');
+			$table->string('mime')->nullable();
 			$table->integer('nomination_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('nomination_id')->references('id')->on('nominations')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

@@ -3,17 +3,19 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateLinksTable extends Migration {
+class CreateFilesTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('links', function (Blueprint $table) {
+		Schema::create('files', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->string('url');
+			$table->string('path');
+			$table->string('type');
+			$table->string('mime')->nullable();
 			$table->integer('nomination_id')->unsigned();
 			$table->timestamps();
 
@@ -27,6 +29,6 @@ class CreateLinksTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('links');
+		Schema::drop('files');
 	}
 }

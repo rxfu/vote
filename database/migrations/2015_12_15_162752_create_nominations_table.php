@@ -17,6 +17,7 @@ class CreateNominationsTable extends Migration {
 			$table->text('brief')->nullable();
 			$table->longText('detail')->nullable();
 			$table->integer('vote_id')->unsigned();
+			$table->softDeletes();
 			$table->timestamps();
 
 			$table->foreign('vote_id')->references('id')->on('votes')->onUpdate('cascade')->onDelete('cascade');

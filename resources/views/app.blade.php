@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	</head>
 	<body>
 		<header id="header" class="page-header">
@@ -70,6 +70,6 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/highcharts.js') }}"></script>
-		<script src="{{ asset('js/main.js') }}"></script>
+		<script src="{{ asset('js/app.js') }}"></script>
 	</body>
 </html>

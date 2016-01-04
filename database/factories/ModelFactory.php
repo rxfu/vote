@@ -55,6 +55,17 @@ $factory->define(App\Link::class, function (Faker\Generator $faker) {
 $factory->define(App\File::class, function (Faker\Generator $faker) {
 	return [
 		'name' => $faker->sentence,
-		'path' => $faker->url,
+		'path' => $faker->file('/tmp', '/uploads', false),
+		'type' => $faker->fileExtension,
+		'mime' => $faker->mimeType,
+	];
+});
+
+$factory->define(App\Image::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->sentence,
+		'path' => $faker->image('/uploads', 800, 600),
+		'type' => $faker->fileExtension,
+		'mime' => $faker->mimeType,
 	];
 });

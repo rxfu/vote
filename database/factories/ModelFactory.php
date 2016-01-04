@@ -42,6 +42,19 @@ $factory->define(App\Nomination::class, function (Faker\Generator $faker) {
 		'title'  => $faker->sentence,
 		'brief'  => $faker->paragraph,
 		'detail' => $faker->text,
-		'link'   => $faker->url,
+	];
+});
+
+$factory->define(App\Link::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->sentence,
+		'url'  => $faker->url,
+	];
+});
+
+$factory->define(App\File::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->sentence,
+		'path' => $faker->url,
 	];
 });

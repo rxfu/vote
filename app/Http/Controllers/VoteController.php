@@ -53,6 +53,19 @@ class VoteController extends Controller {
 	}
 
 	public function postVote(Request $request, $id) {
+		$vote = Vote::find($id);
+
+		if (!$vote->is_active) {
+			return redirect('/');
+		} else {
+			$voted = Voter::where('vote_id', '=', $id)
+				->where('ip', '=', sprintf('%u', ip2long($request->ip())))
+				->count();
+
+			if ($voted) {
+				return redirect('auth/logout');
+			}
+		}
 		$inputs = $request->all();
 
 		$voter             = new Voter();
